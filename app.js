@@ -14,6 +14,10 @@ app.get("/album", (req,res)=>{
     res.sendFile(__dirname + '/app/views/index3.html')
 })
 
+app.get("/videos", (req,res)=>{
+ res.sendFile(__dirname + '/app/views/index4.html')
+})
+
 app.listen(8081, ()=>{
     console.log("Server have been opened")
 })

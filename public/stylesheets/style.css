@@ -42,3 +42,10 @@ body {
 .varela{
     font-family: 'Varela Round', sans-serif;
 }
+.videossizes{
+    width:420px;
+    height:215px;
+    border: solid;
+    border-color: red;
+    border-radius: 5px;
+}
