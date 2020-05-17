@@ -7,11 +7,11 @@ app.get('/', (req, res)=>{
     res.sendFile(__dirname + "/app/views/index.html")
 })
 app.get("/pictures",(req,res)=>{
-    res.sendFile(__dirname + "/app/views/index2.html")
+    res.sendFile(__dirname + "/app/views/index3.html")
 })
 
 app.get("/album", (req,res)=>{
-    res.sendFile(__dirname + '/app/views/index3.html')
+    res.sendFile(__dirname + '/app/views/index2.html')
 })
 
 app.get("/videos", (req,res)=>{
