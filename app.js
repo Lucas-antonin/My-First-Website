@@ -4,18 +4,18 @@ const app = express()
 app.use(express.static(__dirname + "/public"))
 
 app.get('/', (req, res)=>{
-    res.sendFile(__dirname + "/app/views/index.html")
+    res.render(__dirname + "/app/views/index.ejs")
 })
 app.get("/pictures",(req,res)=>{
-    res.sendFile(__dirname + "/app/views/index3.html")
+    res.render(__dirname + "/app/views/index3.ejs")
 })
 
 app.get("/album", (req,res)=>{
-    res.sendFile(__dirname + '/app/views/index2.html')
+    res.render(__dirname + '/app/views/index2.ejs')
 })
 
 app.get("/videos", (req,res)=>{
- res.sendFile(__dirname + '/app/views/index4.html')
+ res.render(__dirname + '/app/views/index4.ejs')
 })
 
 app.listen(8081, ()=>{
