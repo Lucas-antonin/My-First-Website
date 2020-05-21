@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<%- include('partials/head'); -%>
+</head>
+<body>
+<%- include('partials/menu'); -%>
+<h1 class="text-center">LISTS</h1>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#meal" aria-expanded="false" aria-controls="collapseExample">
+    Meal for foxes
+</button>
+<div class="collapse" id="meal">
+    <div class="card card-body">
+<ul class="list-group">
+    <% for(var fe of data.a){ %>
+<li class="list-group-item"><%= fe.name %></li>
+    <% } %>
+</ul>
+    </div>
+</div>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#species" aria-expanded="false" aria-controls="collapseExample">
+    Foxes species
+</button>
+<div class="collapse" id="species">
+    <div class="card card-body">
+        <ul class="list-group">
+   <% for(var spe of data.b){ %>
+       <li class="list-group-item"><%= spe.name%></li>
+        <% } %>
+        </ul>
+    </div>
+</div>
+
+</body>
+<%- include('partials/script'); -%>
+</html>
