@@ -58,7 +58,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form onsubmit="myFunction()" action="/links" method="POST">
+            <form id='myform'onsubmit="myFunction()" action="/links" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Link:</label>
@@ -79,6 +79,10 @@
        var link = $('#link').val()
         $("#createvideos").after('<div class="col-4 mt-5"><iframe id="vid" class="videossizes" src="" frameborder="0" scrolling="no" id="myFrame"></iframe>');
         $("#vid").attr("src", link);
+        //Clean the input
+        $(':input','#myform')
+            .not(':button, :submit, :reset, :hidden')
+            .val('')
     };
 </script>
 <%- include('partials/script'); -%>
