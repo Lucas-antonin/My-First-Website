@@ -1,0 +1,95 @@
+
+<head>
+
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+
+<center>
+    <h1 class="tex1 ">Foxes Videos</h1>
+</center>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4 mt-5">
+            <iframe class="videossizes" src="https://www.youtube.com/embed/fQVhppRP4Wo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-4 mt-5">
+            <iframe class="videossizes" src="https://www.youtube.com/embed/nrSdiqp0Dpk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-4 mt-5">
+            <iframe class="videossizes" src="https://www.youtube.com/embed/jB4q-LcqcQY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-4 mt-5">
+            <iframe class="videossizes" src="https://www.youtube.com/embed/BOkDxTuzQu0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-4 mt-5">
+            <iframe class="videossizes" src="https://www.youtube.com/embed/YA7W9ff6X8g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-4 mt-5">
+            <iframe class="videossizes" src="https://www.youtube.com/embed/_AtP7au_Q9w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div id="createvideos">
+
+        </div>
+
+        <div class="col-4 mt-5">
+            <button type="button" id="jbutton"class="videoaddbutton btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
+                <svg class="bi bi-plus-circle" width="5em" height="5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                    <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add a cute fox video!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id='myform'onsubmit="validateYouTubeUrl()" action="/links" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Link:</label>
+                        <input class="form-control" type="text" id="link" name="link" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="add" class="btn btn-primary">Add video</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function validateYouTubeUrl()
+    {
+        var link = $('#link').val()
+        if (link != undefined || link != '') {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+            var match = link.match(regExp);
+            if (match && match[2].length == 11) {
+
+
+                $("#createvideos").after('<div class="col-4 mt-5"><iframe id="vid" class="videossizes" src="" frameborder="0" scrolling="no" id="myFrame"></iframe>');
+                $("#vid").attr("src", link);
+                // if need to change the url to embed url then use below line
+                $('#vid').attr('src', 'https://www.youtube.com/embed/' + match[2] + '?autoplay=0');
+            }
+            else {
+                alert("URL invalida")
+            }
+        }
+    }
+</script>
