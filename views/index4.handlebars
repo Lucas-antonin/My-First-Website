@@ -31,9 +31,15 @@
         <div class="col-4 mt-5">
             <iframe class="videossizes" src="https://www.youtube.com/embed/_AtP7au_Q9w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div id="createvideos">
 
-        </div>
+
+        {{#each link}}
+            <div class="col-4 mt-5">
+                <iframe class="videossizes" src="{{link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            {{/each}}
+
+
 
         <div class="col-4 mt-5">
             <button type="button" id="jbutton"class="videoaddbutton btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
@@ -56,7 +62,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id='myform'onsubmit="validateYouTubeUrl()" action="/links" method="POST">
+            <form id='myform'onsubmit="" action="/links" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Link:</label>
@@ -72,24 +78,4 @@
     </div>
 </div>
 </body>
-<script>
-    function validateYouTubeUrl()
-    {
-        var link = $('#link').val()
-        if (link != undefined || link != '') {
-            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
-            var match = link.match(regExp);
-            if (match && match[2].length == 11) {
 
-
-                $("#createvideos").after('<div class="col-4 mt-5"><iframe id="vid" class="videossizes" src="" frameborder="0" scrolling="no" id="myFrame"></iframe>');
-                $("#vid").attr("src", link);
-                // if need to change the url to embed url then use below line
-                $('#vid').attr('src', 'https://www.youtube.com/embed/' + match[2] + '?autoplay=0');
-            }
-            else {
-                alert("URL invalida")
-            }
-        }
-    }
-</script>

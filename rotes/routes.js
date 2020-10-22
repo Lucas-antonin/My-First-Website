@@ -14,9 +14,7 @@ router.get("/album", (req,res)=>{
     res.render('../views/index2.handlebars')
 })
 
-router.get("/videos", (req,res)=>{
-    res.render('../views/index4.handlebars')
-})
+router.get("/videos",controller.videosSearch)
 
 
 router.post("/links", controller.linkValidation)
